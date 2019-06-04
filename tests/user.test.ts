@@ -4,11 +4,11 @@ import toCamel from '../src/utils/toCamel';
 import * as friendFakes from './fakes/friends.fake';
 import * as playFakes from './fakes/plays.fake';
 
-jest.mock('../src/services/friends');
-jest.mock('../src/services/plays');
+jest.mock('../src/gateways/friends.gateway');
+jest.mock('../src/gateways/plays.gateway');
 
-import { getFriends, getRelatedFriends } from '../src/services/friends';
-import { getUserPlays } from '../src/services/plays';
+import { getFriends, getRelatedFriends } from '../src/gateways/friends.gateway';
+import { getUserPlays } from '../src/gateways/plays.gateway';
 
 (getFriends as any).mockReturnValue(Promise.resolve(friendFakes.allFriendsMock));
 
@@ -16,10 +16,7 @@ import { getUserPlays } from '../src/services/plays';
     (username: string) => Promise.resolve(friendFakes[`${toCamel(username)}Mock`]));
 
 (getUserPlays as any).mockImplementation(
-    (username: string) => {
-        console.log(`${toCamel(username)}PlaysMock`);
-        return Promise.resolve(playFakes[`${toCamel(username)}PlaysMock`])
-    });
+    (username: string) => Promise.resolve(playFakes[`${toCamel(username)}PlaysMock`]));
 
 describe('GET /users', () => {
     it('should return 200 OK with a collection of Users', async () => {
@@ -30,7 +27,11 @@ describe('GET /users', () => {
         const { body: { users } } =  result;
 
         expect(users.length).toBeDefined();
-        console.log(users);
+        expect(users).toEqual( [
+                { username: 'test_user_0', plays: 9, friends: 2 },
+                { username: 'test_user_1', plays: 3, friends: 1 },
+                { username: 'test_user_2', plays: 0, friends: 0 }
+            ]);
 
         return result;
     });

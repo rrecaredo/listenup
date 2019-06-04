@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-export interface Friend {
+export interface BaseUser {
     username: string;
     uri: string;
 }
 
 export interface FriendsResponse {
-    friends: Friend[];
+    friends: BaseUser[];
     uri: string;
 }
 
