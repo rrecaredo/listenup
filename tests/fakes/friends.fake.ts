@@ -1,5 +1,5 @@
 const sequentialNumericArray = [...Array(3).keys()];
-import getIndexedUsername from "../../src/utils/getIndexedUsername";
+import getIndexedUsername from "@cross/get-indexed-username";
 
 export const allFriendsMock = {
     friends: sequentialNumericArray

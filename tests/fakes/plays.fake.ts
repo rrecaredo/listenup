@@ -1,4 +1,4 @@
-import getIndexedUsername from "../../src/utils/getIndexedUsername";
+import getIndexedUsername from "@cross/get-indexed-username";
 
 const tracks = [
     '21C9B9FE-588C-9194-2146-048EE2CE4331',

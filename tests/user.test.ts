@@ -1,11 +1,11 @@
 import request from 'supertest';
 import server from '../src/server';
-import toCamel from '../src/utils/toCamel';
+import toCamel from '@cross/to-camel';
 import * as friendFakes from './fakes/friends.fake';
 import * as playFakes from './fakes/plays.fake';
 
-jest.mock('../src/gateways/friends.gateway');
-jest.mock('../src/gateways/plays.gateway');
+jest.mock('@gateways/friends.gateway');
+jest.mock('@gateways/plays.gateway');
 
 import { getFriends, getRelatedFriends } from '../src/gateways/friends.gateway';
 import { getUserPlays } from '../src/gateways/plays.gateway';

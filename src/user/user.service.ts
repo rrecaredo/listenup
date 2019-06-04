@@ -1,6 +1,6 @@
 import { getFriends, getRelatedFriends } from '../gateways/friends.gateway';
 import { getUserPlays } from '../gateways/plays.gateway';
-import {ExtendedUser, ExtendedUserWithTracking } from "./user.model";
+import { ExtendedUser, ExtendedUserWithTracking } from "./user.model";
 
 const getExtendedUser = async (username : string): Promise<ExtendedUser> => {
     const userPlaysRequest = getUserPlays(username);

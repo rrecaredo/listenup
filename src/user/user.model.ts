@@ -1,8 +1,8 @@
-export class ExtendedUser {
-    username: string;
+import { BaseUriResource } from "@cross/base-uri-resource";
+
+export class ExtendedUser extends BaseUriResource {
     plays: number;
     friends: number;
-    uri: string;
 }
 
 // What a horrible name, I need to sort this out
