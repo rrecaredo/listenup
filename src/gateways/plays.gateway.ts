@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '@cross/make-axios-resilent';
+import '../cross/make-axios-resilent';
 import urljoin from 'url-join';
 import { BaseUriResource } from "@cross/base-uri-resource";
 require('dotenv').config();
