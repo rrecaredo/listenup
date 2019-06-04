@@ -11,7 +11,8 @@
       "sourceMap": true,
       "outDir": "./dist",
       "baseUrl": "./",
-      "keyofStringsOnly": true
+      "keyofStringsOnly": true,
+      "downlevelIteration": true
     },
     "exclude": [
       "node_modules",
