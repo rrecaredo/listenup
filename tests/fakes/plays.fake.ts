@@ -1,4 +1,4 @@
-import getIndexedUsername from "@cross/get-indexed-username";
+import getIndexedUsername from '@cross/get-indexed-username';
 
 const tracks = [
     '21C9B9FE-588C-9194-2146-048EE2CE4331',
@@ -12,11 +12,11 @@ const tracks = [
     'BA29E55A-CDC9-241A-F952-EB223F7F015F'
 ];
 
-const testUserPlaysMockFactory = (userIndex: number, trackIndexes: number[] = []) => ({
+const testUserPlaysFakeFactory = (userIndex: number, trackIndexes: number[] = []) => ({
     plays: trackIndexes.map(trackIndex => tracks[trackIndex]),
     uri: `/friends/${getIndexedUsername(userIndex)}`
 });
 
-export const testUser0PlaysMock = testUserPlaysMockFactory(0, [1, 1, 1, 2, 2, 3, 3, 4, 5]);
-export const testUser1PlaysMock = testUserPlaysMockFactory(1, [6, 6, 6]);
-export const testUser2PlaysMock = testUserPlaysMockFactory(2);
+export const testUser0PlaysFake = testUserPlaysFakeFactory(0, [1, 1, 1, 2, 2, 3, 3, 4, 5]);
+export const testUser1PlaysFake = testUserPlaysFakeFactory(1, [6, 6, 6]);
+export const testUser2PlaysFake = testUserPlaysFakeFactory(2);

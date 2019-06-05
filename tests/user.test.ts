@@ -9,17 +9,17 @@ jest.mock('@gateways/plays.gateway');
 
 import { getFriends, getRelatedFriends } from '../src/gateways/friends.gateway';
 import { getUserPlays } from '../src/gateways/plays.gateway';
-import { ExtendedUserWithTracking} from "../src/user/user.model";
+import { ExtendedUser } from "../src/user/user.model";
 
-(getFriends as jest.Mock<any>).mockReturnValue(Promise.resolve(friendFakes.allFriendsMock));
+(getFriends as jest.Mock<any>).mockReturnValue(Promise.resolve(friendFakes.allFriendsFake));
 
 (getRelatedFriends as jest.Mock<any>).mockImplementation(
-    (username: string) => Promise.resolve(friendFakes[`${toCamel(username)}Mock`]));
+    (username: string) => Promise.resolve(friendFakes[`${toCamel(username)}Fake`]));
 
 (getUserPlays as jest.Mock<any>).mockImplementation(
-    (username: string) => Promise.resolve(playFakes[`${toCamel(username)}PlaysMock`]));
+    (username: string) => Promise.resolve(playFakes[`${toCamel(username)}PlaysFake`]));
 
-const testSpecificUser = async (username: string, expectation: ExtendedUserWithTracking) => {
+const testSpecificUser = async (username: string, expectation: ExtendedUser) => {
     const uri = `/users/${username}`;
     const result = await request(server).get(uri);
     const { body: user, status } =  result;

@@ -1,11 +1,10 @@
-import { BaseUriResource } from "@cross/base-uri-resource";
+import { BaseUriResource } from '../cross/base-uri-resource';
 
-export class ExtendedUser extends BaseUriResource {
+export class User extends BaseUriResource {
     plays: number;
     friends: number;
 }
 
-// What a horrible name, I need to sort this out
-export class ExtendedUserWithTracking extends ExtendedUser {
+export class ExtendedUser extends User {
     tracks: number;
 }

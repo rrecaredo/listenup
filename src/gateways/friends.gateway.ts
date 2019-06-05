@@ -1,7 +1,7 @@
 import axios from 'axios';
 import '../cross/make-axios-resilent';
 import urljoin from 'url-join';
-import { BaseUriResource } from "@cross/base-uri-resource";
+import { BaseUriResource } from '../cross/base-uri-resource';
 require('dotenv').config();
 
 const baseUrl = process.env.FRIENDS_SERVICE_URL || 'http://localhost:8000/friends';
@@ -16,7 +16,7 @@ export interface UserFriendsResponse extends BaseUriResource {
 }
 
 export const getFriends = async () => {
-    const friendsResponse = await axios.get<FriendsResponse>( 'http://localhost:8000/friends');
+    const friendsResponse = await axios.get<FriendsResponse>(baseUrl);
     return friendsResponse.data;
 };
 

@@ -1,8 +1,8 @@
 import { getFriends, getRelatedFriends } from '../gateways/friends.gateway';
 import { getUserPlays } from '../gateways/plays.gateway';
-import { ExtendedUser, ExtendedUserWithTracking } from "./user.model";
+import { User, ExtendedUser } from './user.model';
 
-const getExtendedUser = async (username : string): Promise<ExtendedUser> => {
+const getExtendedUser = async (username : string): Promise<User> => {
     const userPlaysRequest = getUserPlays(username);
     const userFriendsRequest = getRelatedFriends(username);
 
@@ -16,7 +16,7 @@ const getExtendedUser = async (username : string): Promise<ExtendedUser> => {
     };
 };
 
-export const getUsers = async () : Promise<ExtendedUser[]> => {
+export const getUsers = async () : Promise<User[]> => {
     const friendsResponse = await getFriends();
 
     if (!friendsResponse.friends || !friendsResponse.friends.length)
@@ -29,7 +29,7 @@ export const getUsers = async () : Promise<ExtendedUser[]> => {
     return extendedUsers;
 };
 
-export const getUser = async (username: string) : Promise<ExtendedUserWithTracking> => {
+export const getUser = async (username: string) : Promise<ExtendedUser> => {
     const { plays } = await getUserPlays(username);
     const { friends } = await getRelatedFriends(username);
     return {
