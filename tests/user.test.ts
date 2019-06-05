@@ -26,7 +26,11 @@ const testSpecificUser = async (username: string, expectation: ExtendedUser) => 
 
     expect(status).toBe(200);
     expect(user).toEqual(expectation);
+
+    return result;
 };
+
+afterEach(() => server.close());
 
 describe('GET all users', () => {
     it('should return 200 OK with a collection of Users', async () => {
@@ -39,6 +43,7 @@ describe('GET all users', () => {
                 { username: 'test_user_1', plays: 3, friends: 1, uri: '/users/test_user_1' },
                 { username: 'test_user_2', plays: 0, friends: 0, uri: '/users/test_user_2' }
             ]);
+        return result;
     });
   });
 
